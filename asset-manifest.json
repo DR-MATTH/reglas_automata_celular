@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/reglas_automata_celular/static/css/main.f7d48b20.css",
-    "main.js": "/reglas_automata_celular/static/js/main.4f475ffa.js",
+    "main.js": "/reglas_automata_celular/static/js/main.c70ba65d.js",
     "index.html": "/reglas_automata_celular/index.html",
     "main.f7d48b20.css.map": "/reglas_automata_celular/static/css/main.f7d48b20.css.map",
-    "main.4f475ffa.js.map": "/reglas_automata_celular/static/js/main.4f475ffa.js.map"
+    "main.c70ba65d.js.map": "/reglas_automata_celular/static/js/main.c70ba65d.js.map"
   },
   "entrypoints": [
     "static/css/main.f7d48b20.css",
-    "static/js/main.4f475ffa.js"
+    "static/js/main.c70ba65d.js"
   ]
 }
