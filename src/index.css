@@ -5,7 +5,9 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+html {
+    font-family: sans-serif;
+}
 html, body, #root {
     height: 100%;
 }
@@ -19,6 +21,10 @@ body {
     flex-direction: column;
 }
 
+.title {
+    padding: 1em 0;
+}
+
 .content {
     flex: 1;
     text-align: center;
@@ -26,7 +32,6 @@ body {
 
 .footer {
     padding: 1em;
-    font-family: sans-serif;
     color: white;
     background-color: #24292f;
     display: flex;
@@ -37,4 +42,30 @@ body {
 .hearts {
     color: #e25555;
     font-size: 1.4em;
+}
+
+table {
+    /* border-collapse: collapse; */
+    margin: auto;
+    margin-top: 25%;
+}
+
+td {
+    width: 50px;
+    height: 50px;
+    border: black solid 2px;
+}
+
+.painted {
+    background-color: black;
+}
+
+.reglas_conocidas {
+    display: flex;
+    justify-content: center;
+    padding: 1em 0;
+}
+
+.grupo {
+    padding: 0 1em;
 }
