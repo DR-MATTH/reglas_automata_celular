@@ -4,7 +4,7 @@ export default function App() {
   return (
     <>
       <div className='content'>
-        Hello World!
+        Aplicación de las reglas autómatas celulares
       </div>
       <Footer/>
     </>
