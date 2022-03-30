@@ -46,9 +46,10 @@ body {
 
 table {
     /* border-collapse: collapse; */
-    margin: auto;
-    margin-top: 25%;
+    margin: 10% auto;
+    table-layout: fix
 }
+
 
 td {
     width: 50px;

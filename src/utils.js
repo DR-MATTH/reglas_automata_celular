@@ -72,9 +72,22 @@ export function generarMatriz(regla, n, m) {
  */
 function generarMatrizHelper(regla, n, m) {
     // creamos la matriz de ceros
-    let matriz = Array(n).fill(Array(m).fill(0))
+    let matriz = Array(n).fill().map(() => Array(m).fill(0))
     // colocamos el valor semilla
     matriz[0][Math.trunc(m/2)] = 1
-    console.log(matriz)
-    console.log(regla)
+    // console.log(JSON.stringify(matriz))
+    // console.log(JSON.stringify(regla))
+    let condicion = ''
+    for (let i = 1; i < n; i++) {
+        for (let j = 1; j < m - 1; j++) {
+            condicion = [matriz[i-1][j-1], matriz[i-1][j], matriz[i-1][j+1]].join('')
+            // console.log(JSON.stringify(condicion), regla[condicion])
+            // aqui entra con los valores en binario y obtiene la salida
+            matriz[i][j] = regla[condicion]
+            // console.log(matriz[i][j])
+        }
+    }
+    // console.log(JSON.stringify(matriz))
+
+    return matriz
 }
