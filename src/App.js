@@ -10,6 +10,19 @@ export default function App() {
   // console.log('render', filas, columnas, regla)
   const [matriz, setMatriz] = useState(generarMatriz(regla, filas, columnas))
 
+  // para las reglas personalizadas
+  const values = ['111', '110', '101', '100', '011', '010', '001', '000']
+  const data = {
+    '111': 0,
+    '110': 0,
+    '101': 0,
+    '100': 0,
+    '011': 0,
+    '010': 0,
+    '001': 0,
+    '000': 0
+  }
+
   // para ejecutar cada que se entra a la pagina por primera vez
   useEffect(() => {
     const inputFilas = document.getElementById('inputFilas')
@@ -59,26 +72,39 @@ export default function App() {
           </div>
         </div>
         <div className='regla_custom'>
-          <div>
-            <label>o </label>
-            <button>Crea una regla</button>
+          <label>o </label>
+          <button
+            onClick={() => document.getElementById('container_regla_custom').classList.remove('toggle')}
+          >Crea una regla</button>
+          <div className='container_regla_custom toggle' id='container_regla_custom'>
+            <button className='boton_cerrar'
+              onClick={() => document.getElementById('container_regla_custom').classList.add('toggle')}
+            >X</button>
+            <div className='opciones'>
+              {values.map((x, i) => (
+                <div key={i}>
+                  <Options id={x} data={data}/>
+                </div>
+              ))}
+            </div>
+            <button onClick={() => {
+              console.log(data)
+            }}>
+              mostrar regla
+            </button>
           </div>
         </div>
         <table>
           <tbody>
-            {
-              matriz.map((filas, i) => (
-                <tr key={`${i}`}>
-                  {
-                    filas.map((celda, j) => {
-                      if (celda)
-                        return <td className='painted' key={`${i}${j}`}></td>
-                      return <td key={`${i}${j}`}></td>
-                    })
-                  }
-                </tr>
-              ))
-            }
+            {matriz.map((filas, i) => (
+              <tr key={`${i}`}>
+                {filas.map((celda, j) => {
+                  if (celda)
+                    return <td className='painted' key={`${i}${j}`}></td>
+                  return <td key={`${i}${j}`}></td>
+                })}
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
@@ -92,5 +118,39 @@ function Footer() {
     <div className='footer'>
       Made with <span className='hearts'>&nbsp;&#10084;&nbsp;</span> by Dr Matth
     </div>
+  )
+}
+
+function Options(params) {
+  return (
+    <table>
+      <tbody>
+        <tr>
+          {
+            params.id.split('').map((x, i) => {
+              if (x === '1')
+                return <td className='painted' key={i}></td>
+              return <td key={i}></td>
+            })
+          }
+        </tr>
+        <tr>
+          <td className='borderless'></td>
+          <td id={`data-${params.id}`}></td>
+          <td className='borderless'></td>
+        </tr>
+        <tr>
+          <td colSpan={3} className='borderless'>
+            <label className="switch">
+              <input type="checkbox" onChange={() => {
+                document.getElementById(`data-${params.id}`).classList.toggle('painted')
+                params.data[params.id] = !params.data[params.id] ? 1 : 0
+              }}/>
+                <span className="slider round"></span>
+            </label>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   )
 }
