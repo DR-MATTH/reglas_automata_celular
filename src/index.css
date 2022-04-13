@@ -46,7 +46,8 @@ body {
 
 table {
     /* border-collapse: collapse; */
-    margin: 5% auto;
+    margin: auto;
+    margin-bottom: 5%;
 }
 
 
@@ -89,6 +90,9 @@ td {
     right: 0;
     top: 0;
     margin: 0.5em;
+    padding: 5px;
+    font-weight: bold;
+    background-color: #da7f7f;
 }
 
 .toggle {
@@ -97,6 +101,12 @@ td {
 
 .borderless {
     border: none;
+}
+
+.regla_custom {
+    font-size: 1em;
+    margin: 1em;
+    padding: 5px;
 }
 
  /* The switch - the box around the slider */

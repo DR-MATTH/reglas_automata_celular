@@ -55,7 +55,7 @@ const regla90 = {
  */
 export function generarMatriz(regla, n, m) {
     if (typeof(regla) === 'object')
-        return generarMatriz(regla, n, m)
+        return generarMatrizHelper(regla, n, m)
     // estos pueden ser string o number
     if (regla == 30)
         return generarMatrizHelper(regla30, n, m)

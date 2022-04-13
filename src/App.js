@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { generarMatriz } from './utils.js'
 
 export default function App() {
@@ -12,7 +12,7 @@ export default function App() {
 
   // para las reglas personalizadas
   const values = ['111', '110', '101', '100', '011', '010', '001', '000']
-  const data = {
+  const data = useRef({
     '111': 0,
     '110': 0,
     '101': 0,
@@ -21,7 +21,7 @@ export default function App() {
     '010': 0,
     '001': 0,
     '000': 0
-  }
+  })
 
   // para ejecutar cada que se entra a la pagina por primera vez
   useEffect(() => {
@@ -31,8 +31,9 @@ export default function App() {
     const inputColumnas = document.getElementById('inputColumnas')
     inputColumnas.value = 15
   }, [])
-
+  
   useEffect(() => {
+    console.log('triggering table...')
     setMatriz(generarMatriz(regla, filas, columnas))
   }, [regla, filas, columnas])
 
@@ -83,14 +84,15 @@ export default function App() {
             <div className='opciones'>
               {values.map((x, i) => (
                 <div key={i}>
-                  <Options id={x} data={data}/>
+                  <Options id={x} data={data.current}/>
                 </div>
               ))}
             </div>
-            <button onClick={() => {
-              console.log(data)
+            <button className='regla_custom' onClick={() => {
+              console.log(data.current)
+              setRegla({...data.current})
             }}>
-              mostrar regla
+              usar esta regla
             </button>
           </div>
         </div>
